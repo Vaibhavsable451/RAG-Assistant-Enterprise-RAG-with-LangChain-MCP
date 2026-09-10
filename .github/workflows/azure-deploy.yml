@@ -41,22 +41,40 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Log in to Azure (if AZURE_CREDENTIALS secret is present)
+      - name: Log in to Azure (Service Principal)
         if: ${{ secrets.AZURE_CREDENTIALS != '' }}
         uses: azure/login@v2
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Deploy to Azure App Service
+      - name: Deploy via Publish Profile
+        if: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE != '' }}
         uses: azure/webapps-deploy@v3
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: .
 
+      - name: Deploy via Azure Credentials
+        if: ${{ secrets.AZURE_CREDENTIALS != '' && secrets.AZURE_WEBAPP_PUBLISH_PROFILE == '' }}
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          package: .
 
-      # App Service reads GROQ_API_KEY etc. from its Configuration > Application
-      # settings, which should be set once via:
-      #   az webapp config appsettings set --name <app> --resource-group <rg> \
-      #     --settings GROQ_API_KEY=... GROQ_MODEL=...
-      # Do NOT put secrets in this workflow file.
+      - name: Setup Notice (Missing Azure Credentials/Publish Profile)
+        if: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE == '' && secrets.AZURE_CREDENTIALS == '' }}
+        run: |
+          echo "::notice title=Azure Deployment Setup Required::Neither AZURE_WEBAPP_PUBLISH_PROFILE nor AZURE_CREDENTIALS secret found."
+          echo "=========================================================================="
+          echo "To enable automatic deployment to Azure App Service:"
+          echo "1. Go to Azure Portal -> your App Service -> Overview -> 'Get publish profile'."
+          echo "2. Go to your GitHub repository -> Settings -> Secrets and variables -> Actions."
+          echo "3. Click 'New repository secret':"
+          echo "   - Name: AZURE_WEBAPP_PUBLISH_PROFILE"
+          echo "   - Value: Paste the XML content of your downloaded publish profile."
+          echo "4. Under 'Variables' tab, click 'New repository variable':"
+          echo "   - Name: AZURE_WEBAPP_NAME"
+          echo "   - Value: Your Azure App Service app name (e.g. my-rag-app)."
+          echo "=========================================================================="
+
