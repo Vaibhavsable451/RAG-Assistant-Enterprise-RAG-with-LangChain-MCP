@@ -1,0 +1,47 @@
+[
+  {
+    "rule_id": "POL-001",
+    "name": "Production Model Approval",
+    "category": "Pre-deployment",
+    "description": "Only models with Approved status and in Production lifecycle stage can serve user traffic.",
+    "enabled": true,
+    "action": "BLOCK",
+    "threshold": 0.0
+  },
+  {
+    "rule_id": "POL-002",
+    "name": "Maximum Risk Score Limit",
+    "category": "Pre-deployment",
+    "description": "Models with Risk Score above 75.0 (Critical) are blocked from deployment.",
+    "enabled": true,
+    "action": "BLOCK",
+    "threshold": 75.0
+  },
+  {
+    "rule_id": "POL-003",
+    "name": "Mandatory PII Redaction",
+    "category": "Runtime",
+    "description": "All user queries containing sensitive PII must be redacted before sending to LLM.",
+    "enabled": true,
+    "action": "FLAG",
+    "threshold": 0.0
+  },
+  {
+    "rule_id": "POL-004",
+    "name": "Prompt Injection Prevention",
+    "category": "Security",
+    "description": "Queries containing prompt injection or jailbreak patterns are automatically blocked.",
+    "enabled": true,
+    "action": "BLOCK",
+    "threshold": 0.0
+  },
+  {
+    "rule_id": "POL-005",
+    "name": "High-Risk Approval Requirement",
+    "category": "Runtime",
+    "description": "Queries evaluated with Risk Score >= 60.0 require Human-in-the-Loop approval.",
+    "enabled": true,
+    "action": "REQUIRE_APPROVAL",
+    "threshold": 60.0
+  }
+]

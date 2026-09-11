@@ -1,0 +1,28 @@
+[
+  {
+    "request_id": "REQ-455192",
+    "request_type": "HIGH_RISK_QUERY",
+    "requester": "UserX",
+    "subject": "High risk query prompt",
+    "risk_score": 75.0,
+    "status": "APPROVED",
+    "created_at": 1789100455.1929846,
+    "reviewed_at": 1789100455.1940653,
+    "reviewer": "AdminUser",
+    "review_notes": "Approved by admin",
+    "payload": {}
+  },
+  {
+    "request_id": "REQ-480586",
+    "request_type": "HIGH_RISK_QUERY",
+    "requester": "UserX",
+    "subject": "High risk query prompt",
+    "risk_score": 75.0,
+    "status": "APPROVED",
+    "created_at": 1789100480.58645,
+    "reviewed_at": 1789100480.5871084,
+    "reviewer": "AdminUser",
+    "review_notes": "Approved by admin",
+    "payload": {}
+  }
+]

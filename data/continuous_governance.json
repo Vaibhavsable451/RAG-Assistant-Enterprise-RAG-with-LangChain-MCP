@@ -1,0 +1,48 @@
+{
+  "models": {
+    "groq-llama-3.3-70b": {
+      "model_id": "groq-llama-3.3-70b",
+      "sample_count": 2,
+      "avg_latency_ms": 125.7,
+      "error_rate": 0.005,
+      "hallucination_rate": 0.01,
+      "data_drift_score": 0.05,
+      "status": "HEALTHY",
+      "last_updated": 1789100480.5887659
+    }
+  },
+  "events": [
+    {
+      "event_id": "EVT-55195",
+      "model_id": "groq-llama-3.3-70b",
+      "event_type": "RETRAINING_TRIGGERED",
+      "description": "Automated retraining job triggered. Reason: Testing trigger.",
+      "severity": "MEDIUM",
+      "timestamp": 1789100455.195629
+    },
+    {
+      "event_id": "EVT-55196",
+      "model_id": "groq-llama-3.3-70b",
+      "event_type": "RE_EVALUATION_PASSED",
+      "description": "Governance re-evaluation PASSED post-retraining. Model restored to Healthy status.",
+      "severity": "INFO",
+      "timestamp": 1789100455.1961496
+    },
+    {
+      "event_id": "EVT-80589",
+      "model_id": "groq-llama-3.3-70b",
+      "event_type": "RETRAINING_TRIGGERED",
+      "description": "Automated retraining job triggered. Reason: Testing trigger.",
+      "severity": "MEDIUM",
+      "timestamp": 1789100480.5893364
+    },
+    {
+      "event_id": "EVT-80589",
+      "model_id": "groq-llama-3.3-70b",
+      "event_type": "RE_EVALUATION_PASSED",
+      "description": "Governance re-evaluation PASSED post-retraining. Model restored to Healthy status.",
+      "severity": "INFO",
+      "timestamp": 1789100480.5898678
+    }
+  ]
+}

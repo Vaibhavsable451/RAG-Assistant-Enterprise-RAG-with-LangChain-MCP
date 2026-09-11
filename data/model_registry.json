@@ -1,0 +1,32 @@
+{
+  "test-model-1": {
+    "model_id": "test-model-1",
+    "name": "Test LLM",
+    "version": "v1.0",
+    "owner_team": "Testing Team",
+    "training_dataset": "Test DS",
+    "dataset_version": "v1",
+    "lifecycle_stage": "Approved",
+    "approval_status": "Approved",
+    "risk_score": 0.0,
+    "created_at": 1789100480.5749454,
+    "updated_at": 1789100480.5760255,
+    "deployment_history": [],
+    "metadata": {}
+  },
+  "dev-mod": {
+    "model_id": "dev-mod",
+    "name": "Dev",
+    "version": "1.0",
+    "owner_team": "Team",
+    "training_dataset": "DS",
+    "dataset_version": "1.0",
+    "lifecycle_stage": "Development",
+    "approval_status": "Pending",
+    "risk_score": 0.0,
+    "created_at": 1789100480.5808048,
+    "updated_at": 1789100480.5808048,
+    "deployment_history": [],
+    "metadata": {}
+  }
+}
