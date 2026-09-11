@@ -1,0 +1,22 @@
+[server]
+# Disable XSRF protection — required for file uploads to work correctly
+# both locally and behind Azure App Service's reverse proxy.
+# Azure also sets these via startup.sh CLI flags so deploys still work
+# if this hidden folder is missing from the zip artifact.
+headless = true
+enableXsrfProtection = false
+enableCORS = false
+enableWebsocketCompression = false
+
+# Allow uploads up to 500 MB (default is 200 MB)
+maxUploadSize = 500
+
+[browser]
+gatherUsageStats = false
+
+[theme]
+base = "dark"
+backgroundColor = "#0e1117"
+secondaryBackgroundColor = "#1e222d"
+textColor = "#e0e0e0"
+primaryColor = "#7c6ff7"
